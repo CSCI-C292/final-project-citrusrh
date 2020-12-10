@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Rewards.gd" type="Script" id=1]
+
+[node name="Rewards" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.25989
+margin_right = 1.25989
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="."]
+margin_left = 301.121
+margin_top = 153.71
+margin_right = 448.121
+margin_bottom = 167.71
+rect_scale = Vector2( 3, 3 )
+text = "Rewards (Choose One):"
+
+[node name="Attack" type="Button" parent="."]
+margin_left = 370.417
+margin_top = 255.764
+margin_right = 523.417
+margin_bottom = 275.764
+rect_scale = Vector2( 2, 2 )
+text = "Add an Attack to Deck"
+align = 0
+
+[node name="Heal" type="Button" parent="."]
+margin_left = 370.417
+margin_top = 355.764
+margin_right = 523.417
+margin_bottom = 375.764
+rect_scale = Vector2( 2, 2 )
+text = "Add a Heal to Deck"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Attack" to="." method="_on_Attack_pressed"]
+[connection signal="pressed" from="Heal" to="." method="_on_Heal_pressed"]

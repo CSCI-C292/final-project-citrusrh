@@ -8,10 +8,14 @@ var playerCurrentHealth = 100
 var enemyMaxHealth = 50
 var enemyCurrentHealth = 50
 
+func _ready():
+	CardManager.connect("damageDealt", self, "_on_damageDealt")
+	CardManager.connect("healthRestored", self, "_on_healthRestored")
+
 
 func _enter_tree():
 	enemyCurrentHealth = enemyMaxHealth
-	CardManager.drawPile = CardManager.deck
+	CardManager.drawPile = CardManager.deck.duplicate()
 	CardManager.discardPile = []
 	CardManager.hand = []
 	var i = 0
@@ -54,3 +58,16 @@ func _on_EndTurn_pressed():
 	CardManager.currentMana = CardManager.maxMana
 	playerCurrentHealth -= 10
 	print("Enemy applies 10 damage to player.")
+
+
+func _on_damageDealt(amount):
+	enemyCurrentHealth -= amount
+	if enemyCurrentHealth <= 0:
+		_on_EndTurn_pressed()
+		get_tree().change_scene("res://Rewards.tscn")
+
+
+func _on_healthRestored(amount):
+	playerCurrentHealth += amount
+	if playerCurrentHealth > playerMaxHealth:
+		playerCurrentHealth = playerMaxHealth
