@@ -5,8 +5,8 @@ var maxHandSize = 5
 
 var playerMaxHealth = 100
 var playerCurrentHealth = 100
-var enemyMaxHealth = 50
-var enemyCurrentHealth = 50
+var enemyMaxHealth = 100
+var enemyCurrentHealth = 100
 
 func _ready():
 	CardManager.connect("damageDealt", self, "_on_damageDealt")
@@ -32,7 +32,7 @@ func _enter_tree():
 
 func _process(delta):
 	$PlayerHealth.text = "Player HP: " + str(playerCurrentHealth) + "/" + str(playerMaxHealth)
-	$EnemyHealth.text = "Enemy HP: " + str(enemyCurrentHealth) + "/" + str(enemyMaxHealth)
+	$EnemyHealth.text = "Boss HP: " + str(enemyCurrentHealth) + "/" + str(enemyMaxHealth)
 	$Mana.text = "Mana: " + str(CardManager.currentMana)
 
 
@@ -53,8 +53,8 @@ func _on_EndTurn_pressed():
 			print("Drew a card")
 		i += 1
 	CardManager.currentMana = CardManager.maxMana
-	playerCurrentHealth -= 10
-	print("Enemy applies 10 damage to player.")
+	playerCurrentHealth -= 30
+	print("Boss applies 30 damage to player.")
 	if playerCurrentHealth <= 0:
 		get_tree().change_scene("res://GameOver.tscn")
 
@@ -63,7 +63,7 @@ func _on_damageDealt(amount):
 	enemyCurrentHealth -= amount
 	if enemyCurrentHealth <= 0:
 		_on_EndTurn_pressed()
-		get_tree().change_scene("res://Rewards.tscn")
+		get_tree().change_scene("res://Congrats.tscn")
 
 
 func _on_healthRestored(amount):

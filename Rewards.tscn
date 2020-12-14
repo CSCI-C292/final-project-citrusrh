@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Rewards.gd" type="Script" id=1]
+[ext_resource path="res://OptimusPrinceps.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://back_cave.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 2 )
 
 [node name="Rewards" type="Control"]
 anchor_right = 1.0
@@ -12,29 +26,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="back_cave" type="Sprite" parent="."]
+position = Vector2( 512, 304 )
+scale = Vector2( 0.512, 0.3 )
+texture = ExtResource( 3 )
+
 [node name="Text" type="Label" parent="."]
-margin_left = 301.121
-margin_top = 153.71
-margin_right = 448.121
-margin_bottom = 167.71
-rect_scale = Vector2( 3, 3 )
+margin_left = 191.508
+margin_top = 89.4541
+margin_right = 844.508
+margin_bottom = 158.454
+custom_fonts/font = SubResource( 1 )
 text = "Rewards (Choose One):"
 
 [node name="Attack" type="Button" parent="."]
-margin_left = 370.417
-margin_top = 255.764
-margin_right = 523.417
-margin_bottom = 275.764
-rect_scale = Vector2( 2, 2 )
+margin_left = 243.165
+margin_top = 231.826
+margin_right = 810.165
+margin_bottom = 291.826
+custom_fonts/font = SubResource( 2 )
 text = "Add an Attack to Deck"
 align = 0
 
 [node name="Heal" type="Button" parent="."]
-margin_left = 370.417
-margin_top = 355.764
-margin_right = 523.417
-margin_bottom = 375.764
-rect_scale = Vector2( 2, 2 )
+margin_left = 296.082
+margin_top = 357.024
+margin_right = 763.082
+margin_bottom = 417.024
+custom_fonts/font = SubResource( 3 )
 text = "Add a Heal to Deck"
 align = 0
 __meta__ = {

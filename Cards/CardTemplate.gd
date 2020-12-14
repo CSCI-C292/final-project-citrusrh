@@ -9,6 +9,8 @@ func _ready():
 	else:
 		CardManager.drawPile = CardManager.discardPile
 		CardManager.discardPile = []
+		randomize()
+		CardManager.drawPile.shuffle()
 		var cardDrawn = CardManager.drawPile.pop_front()
 		$Name.text = cardDrawn
 		CardManager.hand.append(cardDrawn)

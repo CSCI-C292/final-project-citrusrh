@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Congrats.gd" type="Script" id=1]
+[ext_resource path="res://OptimusPrinceps.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://back_cave.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back_cave" type="Sprite" parent="."]
+position = Vector2( 512, 304 )
+scale = Vector2( 0.512, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="YouLost" type="Label" parent="."]
+margin_left = 181.428
+margin_top = 41.5774
+margin_right = 830.428
+margin_bottom = 266.577
+custom_fonts/font = SubResource( 1 )
+text = "Looks like your luck finally ran out, huh? Would you like to try again?"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="."]
+margin_left = 301.121
+margin_top = 342.698
+margin_right = 449.121
+margin_bottom = 413.698
+custom_fonts/font = SubResource( 2 )
+text = "Yes"
+
+[node name="No" type="Button" parent="."]
+margin_left = 579.564
+margin_top = 345.684
+margin_right = 727.564
+margin_bottom = 416.684
+custom_fonts/font = SubResource( 2 )
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="No" to="." method="_on_No_pressed"]
